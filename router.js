@@ -19,12 +19,13 @@ router.post("/getOutput",(req,res)=>{
 axios.post('https://codex-api.herokuapp.com/',data)
 .then(function (response) {
     
-  const output=response.data.output
+  const output=response.data.output || response.data.error;
+  console.log(response.data);
 
   return res.send(output)
 })
 .catch(function (error) {
-  console.log("error");
+ console.log(error);
 });
     
    
